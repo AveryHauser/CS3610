@@ -1,0 +1,68 @@
+template <class T>
+LinkedList<T>::~LinkedList(){
+    ListNode* current = head;
+    while (current != NULL){
+        ListNode* next = current ->next;
+        delete current;
+        *current = NULL;
+        current = next;
+    }
+}
+
+template <class T>
+void LinkedList<T>::print() const {
+    if (head == nullptr){
+        cerr << "Empty" << endl;
+    }else{
+        ListNode* current = head;
+        while (current != NULL){
+            cout << current->data << " ";
+            current = current->next;
+        }
+        cout << endl;
+    }
+    
+}
+template <class T>
+void LinkedList<T>::push_front(const T data) {
+    ListNode* current = new ListNode(data);
+    if (head == nullptr){
+        head = current;
+        current->next = nullptr;
+    }else{
+        current->next = head;
+        head = current;
+        
+    }
+}
+template <class T>
+void LinkedList<T>::pop_front(){
+    if(head == nullptr){
+        cerr << "Empty" << endl;
+    }else{
+        ListNode* current = head;
+        ListNode* next = current ->next;
+        head = next;
+        delete current;
+    }
+}
+template <class T>
+void LinkedList<T>::reverse(){
+    if (head == nullptr){
+        cerr << "Empty" << endl;
+    }else{
+        ListNode* prev = nullptr;
+        ListNode* curr = head;
+        ListNode* next = nullptr;
+        
+        while (curr != nullptr) {
+            next = curr->next; // Store the next node
+            curr->next = prev; // Reverse the link
+            prev = curr;       // Move prev to current node
+            curr = next;       // Move to the next node
+        }
+        
+        head = prev; // Update the head to the new first node
+    }
+
+}
