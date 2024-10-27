@@ -101,7 +101,13 @@ void HuffmanTree::construct(const string message) {
 
 
 void HuffmanTree::print() const {   // need to implement this function 
-  
+  if (root == nullptr) return;
+  for (int i = 0; i < message.length(); i++){
+    if (root->character = message[i]){
+
+    }
+  }
+
   // Print the Huffman encoding of this->message.
   // Append 0 to a character's encoding if moving left in Huffman tree.
   // Append 1 to a character's encoding if moving right in Huffman tree.
