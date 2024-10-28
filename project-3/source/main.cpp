@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
 				     
     tree.construct(message);
     tree.print();
-    //tree.destruct();
+    tree.destruct();
   }
 
 }

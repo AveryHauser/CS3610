@@ -35,6 +35,7 @@ public:
   void print() const;
 
 private:
+  void generate_codes(HuffmanNode* node, string code, map<char, string>& huffman_codes) const;
 
   HuffmanNode *root;
   string message;

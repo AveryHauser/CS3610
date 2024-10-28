@@ -99,13 +99,33 @@ void HuffmanTree::construct(const string message) {
   this->root = heap.peek();
 }
 
+void HuffmanTree::generate_codes(HuffmanNode *node, string code, map<char, string>& huffman_codes) const {
+    if (node == nullptr) return;
 
+    // Leaf node: assign code to the character
+    if (node->character != '\0' && node->character != '*') {
+        huffman_codes[node->character] = code;
+    } else {
+        // Internal node: traverse left and right children
+        generate_codes(node->left, code + "0", huffman_codes);
+        generate_codes(node->right, code + "1", huffman_codes);
+    }
+}
 void HuffmanTree::print() const {   // need to implement this function 
   if (root == nullptr) return;
-  for (int i = 0; i < message.length(); i++){
-    if (root->character = message[i]){
 
+    // Map to store Huffman codes for each character
+    map<char, string> huffman_codes;
+    
+    // Generate codes starting from the root of the tree
+    generate_codes(root, "", huffman_codes);
+
+    // Print the encoded message
+    cout << "\nEncoded Message: ";
+    for (char ch : message) {
+        cout << huffman_codes[ch] << " ";
     }
+    cout << endl;
   }
 
   // Print the Huffman encoding of this->message.
@@ -117,5 +137,5 @@ void HuffmanTree::print() const {   // need to implement this function
 
   // Also, feel free to add a print helper function.
 
-}
+
 
