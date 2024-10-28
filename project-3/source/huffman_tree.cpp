@@ -121,11 +121,11 @@ void HuffmanTree::print() const {   // need to implement this function
     generate_codes(root, "", huffman_codes);
 
     // Print the encoded message
-    cout << "\nEncoded Message: ";
-    for (char ch : message) {
-        cout << huffman_codes[ch] << " ";
+    std::cout << "Encoded Message: ";
+    for (int i = 0; i < message.length(); i++) {
+      std::cout << huffman_codes[message[i]] << " ";
     }
-    cout << endl;
+    std::cout << std::endl;
   }
 
   // Print the Huffman encoding of this->message.

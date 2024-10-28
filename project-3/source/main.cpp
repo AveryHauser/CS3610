@@ -23,6 +23,7 @@ int main(int argc, char** argv) {
     tree.construct(message);
     tree.print();
     tree.destruct();
+    std::cout << std::endl;
   }
 
 }
