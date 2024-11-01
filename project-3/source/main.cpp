@@ -9,6 +9,7 @@ int main(int argc, char** argv) {
   int T;
   cout << "Enter how many test cases you have: ";
   cin >> T;
+  cout << endl;
   cin.ignore();
   for (int t = 1; t <= T; ++t) {
     cout << "Test Case: " << t << endl;

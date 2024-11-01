@@ -100,27 +100,29 @@ void HuffmanTree::construct(const string message) {
 }
 
 void HuffmanTree::generate_codes(HuffmanNode *node, string code, map<char, string>& huffman_codes) const {
-    if (node == nullptr) return;
+  //will return if the node isnt set
+  if (node == nullptr) return;
 
-    // Leaf node: assign code to the character
-    if (node->character != '\0' && node->character != '*') {
-        huffman_codes[node->character] = code;
-    } else {
-        // Internal node: traverse left and right children
-        generate_codes(node->left, code + "0", huffman_codes);
-        generate_codes(node->right, code + "1", huffman_codes);
-    }
+  //assigns a code for the charaters 
+  if (node->character != '\0' && node->character != '*') {
+      huffman_codes[node->character] = code;
+  } else {
+      //will go through the left and right nodes to assignment additional codes 
+      generate_codes(node->left, code + "0", huffman_codes);
+      generate_codes(node->right, code + "1", huffman_codes);
+  }
 }
 void HuffmanTree::print() const {   // need to implement this function 
+  //if the tree isnt created to return.
   if (root == nullptr) return;
 
-    // Map to store Huffman codes for each character
+    //creates a map of strings and characters
     map<char, string> huffman_codes;
     
-    // Generate codes starting from the root of the tree
+    //assigns codes to the map that was created
     generate_codes(root, "", huffman_codes);
 
-    // Print the encoded message
+    //outputs the encodded message 
     std::cout << "Encoded Message: ";
     for (int i = 0; i < message.length(); i++) {
       std::cout << huffman_codes[message[i]] << " ";
