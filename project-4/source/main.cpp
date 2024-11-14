@@ -7,13 +7,22 @@ int partition(vector<int>& list, int first, int last) {
   // first, middle, and last elements.
 
   int smallIndex = first;
+  int pivot = list[last];
+  int i = list[first - 1];
 
-  // partition procedure
-  
-  return smallIndex;  
+  for (int j = 0; j < last -1; j++){
+    if (list[j] < pivot){
+      i++;
+      swap(list[i], list[j]);
+    }
+  }
+  swap(list[i + 1], list[last]);
+  return (i + 1);
 }
 
-void quicksort(vector<int>& list, int first, int last) {
+void quicksort(vector<int>& list, int first, int last)
+{
+
 }
 
 void multiway_merge(
