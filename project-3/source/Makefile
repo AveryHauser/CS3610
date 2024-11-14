@@ -1,5 +1,5 @@
 all:
-	g++ huffman_tree.cpp main.cpp
+	g++ -Wall huffman_tree.cpp main.cpp
 
 clean:
 	rm a.out
